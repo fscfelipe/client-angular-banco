@@ -1,0 +1,59 @@
+<div class="container">
+  <h1 class="display-1 margem-topo">CapBank</h1>
+  <hr>
+
+  <form class="margem-topo">
+    <div class="row">
+      <div class="col">
+        <input id="nomeUsuario" type="text" class="form-control" placeholder="Nome do Usuário" required>
+      </div>
+      <div class="col">
+        <input id="senhaUsuario" type="password" class="form-control" placeholder="Senha" required>
+      </div>
+      <div class="col">
+        <input id="depositoInicial" type="number" min="0" class="form-control" placeholder="Depósito inicial" required>
+      </div>
+      <div class="col">
+        <button id="cadastrarConta" type="button" (click)="cadastrarConta()" class="btn btn-primary">Cadastrar</button>
+      </div>
+    </div>
+  </form>
+
+  <div class="margem-topo">
+    <div class="d-flex justify-content-center">
+      <h5>Contas Cadastradas</h5>
+    </div>
+    <div class="d-flex justify-content-left">
+      <table class="table table-striped ">
+        <thead>
+          <tr>
+            <th>Número da Conta</th>
+            <th>Usuário</th>
+            <th>Saldo</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody class="align-middle">
+          <tr *ngFor="let conta of contas | async">
+            <td class="align-middle">{{conta.numeroConta}}</td>
+            <td class="align-middle">{{conta.usuario}}</td>
+            <td class="align-middle">R$ {{conta.saldo}}</td>
+            <td>
+              <div class="input-group">
+                <input id="valorOperacao" type="number" min="0" class="form-control" placeholder="Valor da operação">
+                <div class="input-group-append">
+                  <button type="button" (click)="depositarConta(conta.id)" class="btn btn-success"
+                    type="button">Depositar</button>
+                  <button type="button" (click)="sacarConta(conta.id)" class="btn btn-warning"
+                    type="button">Sacar</button>
+                </div>
+                <button type="button" (click)="deletaConta(conta.id)"
+                  class=" btn btn-danger botaoDeletar">Excluir</button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
