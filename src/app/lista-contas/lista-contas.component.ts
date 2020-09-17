@@ -25,10 +25,10 @@ export class ListaContasComponent implements OnInit {
   }
 
   sacarConta(id: number) {
-    var valorOperacao = (<HTMLInputElement>document.getElementById('valorOperacao'));
+    var valorOperacao = (<HTMLInputElement>document.getElementById(`valorOperacao${id}`));
 
     if (+valorOperacao.value <= 0) {
-      console.log("Não é possível sacar negativo");
+      console.log("Não é possível sacar negativo", +valorOperacao.value);
       return;
     }
 
@@ -45,7 +45,7 @@ export class ListaContasComponent implements OnInit {
   }
 
   depositarConta(id: number) {
-    var valorOperacao = (<HTMLInputElement>document.getElementById('valorOperacao'));
+    var valorOperacao = (<HTMLInputElement>document.getElementById(`valorOperacao${id}`));
 
     if (+valorOperacao.value <= 0) {
       console.log("Não é possível depositar negativo");
